@@ -43,7 +43,7 @@ class Match(models.Model):
 
 	def save(self, *args, **kwargs):
 		if (self.nbGoals1 > self.nbGoals2):
-			self.team1.__setattr__("totalPoint",2)
+			self.team1.totalPoint +=2
 			self.team1.totalVictories +=1
 		if (self.nbGoals1 < self.nbGoals2):
 			self.team2.totalPoint +=2
