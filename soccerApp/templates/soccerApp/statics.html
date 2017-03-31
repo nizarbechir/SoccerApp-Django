@@ -1,0 +1,55 @@
+{% extends 'soccerApp/base.html' %}
+{% load mathfilters %}
+{% block title %}Weekly statics - Soccer{% endblock %}
+
+{% block body %}
+{% if all_matchs %}
+
+<div class="container">
+<h1 class="page-header">Statistics about last week</h1>
+	<div class="row">
+    <div class="col-sm-12">
+<h3>Matches played</h3>
+</div>
+<div class="col-sm-6">
+
+<div class="col-sm-6">
+<div class="text-muted">
+{% for match in all_matchs %}
+<p>{{match.team1}} VS {{match.team2}} <span class="pull-right">{{match.nbGoals1}} - {{match.nbGoals2}} </span></p>
+{% endfor %}
+</div>
+</div>
+<div class="col-sm-6">
+<h4>Total matches last week :  <span class="pull-right">{{nbrMatch}}</span></h4>
+<p class="text-primary planned">Max goals for last week : <span class="pull-right">{%if maxG1 > maxG2 %}{{maxG1}}{% else %}{{maxG2}}{% endif %}</span></p>
+<p class="text-danger">Min goals for last week : <span class="pull-right">{%if minG1 < minG2 %}{{minG1}}{% else %}{{minG2}}{% endif %}</span></p>
+</div>
+
+	
+     
+         
+	</div>
+    <div class="col-sm-6">
+    <h6>The best and the bad team of the week</h6>
+<div class="progress">
+            <div class="progress-bar progress-bar-success " style="width: {{maxPoints|div:maxPoints|add:minPoints|mul:10}}%">
+              <span class="ng-binding">{{bestTeam}} with {{maxPoints}} points</span>
+            </div>
+            <div class="progress-bar progress-bar-primary nonplanned" style="width: {{minPoints|div:maxPoints|add:minPoints|mul:10}}%">
+              <span class="ng-binding">{{badTeam}} with {{minPoints}} points</span>
+            </div>
+            <div class="progress-bar progress-bar-clear pull-right" style="width: 0%">
+              <span class="ng-binding"></span>
+            </div>
+          </div>
+
+          </div>
+</div>
+    <hr>
+
+    
+</div>
+
+{% endif %}
+{% endblock %}

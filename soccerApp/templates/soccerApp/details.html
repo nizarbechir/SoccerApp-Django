@@ -1,0 +1,43 @@
+{% extends 'soccerApp/base.html' %}
+{% block title %}Team details - Soccer{% endblock %}
+{% block body %}
+
+<br>
+<br>
+
+<div class="container">
+    			
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="rating-block">
+					<h4>{{team.nameTeam}}</h4>
+					<h2 class="bold padding-bottom-7">{{team.totalVictories}}<small>/{{team.playedGames}}</small></h2>
+						
+					  		{{team.totalPoint}} &nbsp;<span class="glyphicon glyphicon-star red" aria-hidden="true"></span>
+					  	
+				</div>
+			</div>
+						
+		</div>			
+		
+		<div class="row">
+			<div class="col-sm-7">
+				<hr/>
+				<div class="review-block">
+					<div class="row">
+						<div class="col-sm-9">
+							<div class="review-block-title">Summary</div>
+							<div class="review-block-description">{{team.summary}}</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+    </div> <!-- /container -->
+
+{% endblock %}
+
+
+    

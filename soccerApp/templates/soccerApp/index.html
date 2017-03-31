@@ -1,0 +1,39 @@
+{% extends 'soccerApp/base.html' %}
+{% load mathfilters %}
+{% block body %}
+{% if all_teams %}
+<div class="container">
+<h4>Soccer Results</h4>
+	
+<div class="container">
+	<div class="row">
+        <div class="col-md-3">
+        </div>
+		<div class="col-md-9">
+    	 <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Team</th>
+                            <th>Score</th>
+                            <th>total point</th>
+                            <th>Played Games</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{% for team in all_teams %}
+                        <tr>
+                            <td><a href="{% url 'soccerApp:details' team.id %}">{{team.nameTeam}}</a></td>
+                            <td><div class="progress" style="height:9px; margin:8px 0;"><div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="7" aria-valuemin="0" aria-valuemax="10" style="width: {{team.totalPoint|sub:2|div:maxPoints|mul:100}}%"></div></div></td>
+                            <td>{{team.totalPoint}}</td>
+                            <td>{{team.playedGames}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>   
+		</div>
+	</div>
+</div>
+</div>
+
+{% endif %}
+{% endblock %}
