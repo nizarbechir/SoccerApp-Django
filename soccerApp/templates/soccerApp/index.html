@@ -23,7 +23,7 @@
                     	{% for team in all_teams %}
                         <tr>
                             <td><a href="{% url 'soccerApp:details' team.id %}">{{team.nameTeam}}</a></td>
-                            <td><div class="progress" style="height:9px; margin:8px 0;"><div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="7" aria-valuemin="0" aria-valuemax="10" style="width: {{team.totalPoint|sub:2|div:maxPoints|mul:100}}%"></div></div></td>
+                            <td><div class="progress" style="height:9px; margin:8px 0;"><div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="7" aria-valuemin="0" aria-valuemax="10" style="width: {{team.totalPoint|div:maxPoints|mul:100}}%"></div></div></td>
                             <td>{{team.totalPoint}}</td>
                             <td>{{team.playedGames}}</td>
                         </tr>

@@ -51,6 +51,7 @@ class StaticsView(generic.ListView):
 	some_day_last_week = timezone.now().date() - timedelta(days=7)
 	monday_of_last_week = some_day_last_week - timedelta(days=(some_day_last_week.isocalendar()[2] - 1))
 	monday_of_this_week = monday_of_last_week + timedelta(days=7)
+	# if (Match.objects.filter(date__gte=monday_of_last_week, date__lt=monday_of_this_week)):
 	minGoal1 = Match.objects.filter(date__gte=monday_of_last_week, date__lt=monday_of_this_week).order_by('nbGoals1')[0].nbGoals1
 	minGoal2 = Match.objects.filter(date__gte=monday_of_last_week, date__lt=monday_of_this_week).order_by('nbGoals2')[0].nbGoals2
 	maxGoal1 = Match.objects.filter(date__gte=monday_of_last_week, date__lt=monday_of_this_week).order_by('-nbGoals1')[0].nbGoals1
